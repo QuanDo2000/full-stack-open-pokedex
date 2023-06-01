@@ -1,5 +1,9 @@
 #!/bin/bash
 
-echo "Hello from shell script"
+VAR=$(curl -s http://localhost:5000/health)
 
-exit 1 # exit status 1 means that the script "fails"
+if [[ $VAR == "ok" ]]; then
+  exit 0
+else
+  exit 1
+fi
