@@ -1,0 +1,17 @@
+name: Periodic Check
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  periodic_check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check the deployed service URL
+        uses: jtalk/url-health-check-action@v3
+        with:
+          url: https://
+          follow-redirect: false
+          max-attempts: 3
+          retry-delay: 5s
