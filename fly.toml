@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for twilight-cloud-3514 on 2023-06-01T14:46:35+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "twilight-cloud-3514"
+primary_region = "sin"
+
+[env]
+  PORT = "8080"
+
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+
+[deploy]
+  release_command = "npm run build"
+
+[processes]
+  app = "node app.js"
+
+[build]
+  [build.args]
+    NODE_VERSION = "16.20.0"
